@@ -4,7 +4,9 @@
 # INSTALLATION
 
 Chrome/Edge:
+
 Go to chrome://extensions or edge://extensions
+
 Enable Developer Mode
 Click Load unpacked
 SelEct folder
