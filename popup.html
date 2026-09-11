@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 340px;
+      padding: 20px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e50914;
+      padding-bottom: 10px;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e50914;
+    }
+    .logo small {
+      font-size: 12px;
+      color: #888;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px 12px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 13px;
+    }
+    input:focus, textarea:focus {
+      border-color: #e50914;
+      outline: none;
+    }
+    textarea {
+      height: 60px;
+      resize: vertical;
+      font-size: 11px;
+      font-family: monospace;
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-start {
+      background: #e50914;
+      color: #fff;
+    }
+    .btn-start:hover {
+      background: #f40612;
+    }
+    .btn-start:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .btn-stop {
+      background: #333;
+      color: #fff;
+    }
+    .btn-stop:hover {
+      background: #444;
+    }
+    .btn-stop:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .status-bar {
+      margin-top: 15px;
+      padding: 10px;
+      background: #1a1a1a;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #aaa;
+      border-left: 3px solid #555;
+    }
+    .status-bar .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+    }
+    .status-bar .stat .value {
+      color: #fff;
+      font-weight: 600;
+    }
+    .status-bar .stat .value.running {
+      color: #34a853;
+    }
+    .status-bar .stat .value.stopped {
+      color: #ea4335;
+    }
+    .footer {
+      margin-top: 15px;
+      font-size: 10px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">My DD <small>v2.0</small></span>
+  </div>
+
+  <div class="field">
+    <label>Target (URL)</label>
+    <input id="targetInput" type="text" placeholder="https://example.com" value="https://example.com">
+  </div>
+
+  <div class="field">
+    <label>Requests/sec per tab</label>
+    <input id="intensityInput" type="number" value="50" min="1" max="500">
+  </div>
+
+  <div class="field">
+    <label>Proxy List (one per line)</label>
+    <textarea id="proxyInput" placeholder="http://ip:port&#10;http://ip:port">http://37.187.73.7:80
+http://45.138.87.238:8080
+http://194.163.161.215:3128
+http://5.181.64.19:80
+http://80.78.21.54:80</textarea>
+  </div>
+
+  <div class="btn-group">
+    <button id="startBtn" class="btn-start">▶ START</button>
+    <button id="stopBtn" class="btn-stop" disabled>■ STOP</button>
+  </div>
+
+  <div class="status-bar" id="statusBar">
+    <div class="stat"><span>Status</span><span class="value stopped" id="statusText">Stopped</span></div>
+    <div class="stat"><span>Requests</span><span class="value" id="requestCount">0</span></div>
+    <div class="stat"><span>Workers</span><span class="value" id="workerCount">0</span></div>
+    <div class="stat"><span>Target</span><span class="value" id="targetDisplay">None</span></div>
+  </div>
+
+  <div class="footer">My DD // Educational use only</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
